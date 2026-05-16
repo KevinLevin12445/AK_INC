@@ -8,6 +8,7 @@ import time as _time
 import os
 import warnings
 warnings.filterwarnings("ignore")
+from engines.insider_engine import InsiderEngine
 
 from translations import LANGS, get_lang
 
@@ -312,8 +313,7 @@ def load_all_engines(period="6mo", interval="1d"):
     bm.fit(feat_aligned, fwd_aligned)
 
     ie = InsiderEngine()
-    ie.run()
-
+    ie.run_once()
     po = PortfolioOptimizer()
     po.run(de.returns)
 
@@ -806,7 +806,7 @@ _live_ticker_fragment()
 @st.fragment(run_every=30)
 def _insider_live_panel():
     """Auto-refreshes every 30 s — fetches latest SEC EDGAR Form 4 filings."""
-    from engines.insider_engine import fetch_real_transactions, InsiderEngine
+    from engines.insider_engine import InsiderEngine
     import plotly.graph_objects as _go
 
     fetch_ts = datetime.utcnow().strftime("%H:%M:%S UTC")
@@ -1967,3 +1967,5 @@ with tab_volprofile:
         "</div>",
         unsafe_allow_html=True,
     )
+
+
