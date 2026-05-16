@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "true",
+  "outputDirectory": "dist",
+  "framework": "custom",
+  "devCommand": "true",
+  "installCommand": "true",
+  "cleanCommand": "true",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
+

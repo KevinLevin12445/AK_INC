@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ak-inc-terminal
+    env: docker
+    region: oregon
+    plan: free
+    rootDir: terminal
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
